@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+   <table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for holding in holdings %}
+    <tr>
+      <td>{{holding.firm}}</td>
+      <td>{{holding.symbol}}</td>
+      <td>{{holding.shares}}</td>
+      <td>{{holding.price | usd}}</td>
+      <td>{{holding.total | usd}}</td>
+
+    </tr>
+      {% endfor %}
+
+    <tr>
+      <td colspan = "4">Balance</td>
+      <td>{{account |usd }}</td>
+    </tr>
+       <tfoot>
+      <tr>
+          <td colspan="4"></td>
+          <td>{{ grand_total | usd }}</td>
+      </tr>
+    </tfoot>
+  </tbody>
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+   <table class="table">
+  <thead class="thead-light table-striped ">
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">No. of shares</th>
+      <th scope="col">Price</th>
+      <th scope="col">Transaction</th>
+      <th scope="col">Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for transaction in transactions %}
+    <tr>
+      <td>{{transaction.id}}</td>
+      <td>{{transaction.firm}}</td>
+      <td>{{transaction.symbol.upper()}}</td>
+      <td>{{transaction.shares}}</td>
+      <td>{{transaction.price | usd}}</td>
+      <td>{{transaction.transaction_type}}</td>
+      <td>{{transaction.transaction_time}}</td>
+    </tr>
+      {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}
